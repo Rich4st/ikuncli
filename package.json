@@ -1,6 +1,6 @@
 {
-  "name": "@ikun/cli",
-  "version": "0.0.1",
+  "name": "create-kun",
+  "version": "0.0.2",
   "description": "a cli for ikun",
   "main": "index.js",
   "bin": {
