@@ -56,14 +56,22 @@ const handleCreate = (params) => {
             const options = Object.assign(answers, params);
 
             /* download repo */
-            if(options.type === '主应用') {
-                await cloneRepo('Rich4st/qiankun-main-template', options.name)
+            if (options.type === '主应用') {
+                if(options.language === 'Vue3.x') {
+                    await cloneRepo('Rich4st/qiankun-main-template', options.name)
+                } else if(options.language === 'React') {
+                    await cloneRepo('Rich4st/qiankun-main-react-template', options.name)
+                }
             } else {
-                await cloneRepo('Rich4st/qiankun-sub-template', options.name)
+                if (options.language === 'Vue3.x') {
+                    await cloneRepo('Rich4st/qiankun-sub-template', options.name)
+                } else if(options.language === 'React') {
+                    await cloneRepo('Rich4st/qiankun-sub-react-template', options.name)
+                }
             }
 
             /* preinstall dependencies */
-            if(options.isInstall) {
+            if (options.isInstall) {
                 const spawn = require('cross-spawn');
                 spawn(options.package, ['install'], { stdio: 'inherit', cwd: resolve(process.cwd(), options.name) })
             }
